@@ -128,16 +128,12 @@ func DefaultNodeOptions(opts ...NodeOption) NodeOptions {
 		Shape:         "box",
 		Style:         "rounded",
 		FixedSize:     true,
-		Width:         1.4,
-		Height:        1.4,
+		Width:         0.8,
+		Height:        0.8,
 		LabelLocation: "b",
 		ImageScale:    true,
-		Font: Font{
-			Name:  "Sans-Serif",
-			Size:  13,
-			Color: "#2D3436",
-		},
-		Attributes: make(map[string]string),
+		Font:          defaultFont(),
+		Attributes:    make(map[string]string),
 	}
 
 	for _, o := range opts {
@@ -151,9 +147,7 @@ func MergeOptionSets(sets ...OptionSet) OptionSet {
 	ns := OptionSet{}
 
 	for _, set := range sets {
-		for _, opt := range set {
-			ns = append(ns, opt)
-		}
+		ns = append(ns, set...)
 	}
 
 	return ns
@@ -225,8 +219,22 @@ func ImageScale(b bool) NodeOption {
 	}
 }
 
-func SetFontOptions(f Font) NodeOption {
+func NodeFontOptions(f Font) NodeOption {
 	return func(o *NodeOptions) {
 		o.Font = f
+	}
+}
+
+func NodeAttribute(name, value string) NodeOption {
+	return func(o *NodeOptions) {
+		o.Attributes[name] = value
+	}
+}
+
+func NodeAttributes(attrs map[string]string) NodeOption {
+	return func(o *NodeOptions) {
+		for k, v := range attrs {
+			o.Attributes[k] = v
+		}
 	}
 }
