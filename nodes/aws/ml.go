@@ -1,6 +1,6 @@
 package aws
 
-import "github.com/blushft/go-diagrams/diagram"
+import "github.com/emarais-godaddy/go-diagrams/diagram"
 
 type mlContainer struct {
 	path string

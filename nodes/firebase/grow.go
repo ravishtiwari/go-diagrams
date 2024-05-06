@@ -1,6 +1,6 @@
 package firebase
 
-import "github.com/blushft/go-diagrams/diagram"
+import "github.com/emarais-godaddy/go-diagrams/diagram"
 
 type growContainer struct {
 	path string
