@@ -12,11 +12,6 @@ var Workloadprovisioning = &workloadprovisioningContainer{
 	path: "assets/openstack/workloadprovisioning",
 }
 
-func (c *workloadprovisioningContainer) Magnum(opts ...diagram.NodeOption) *diagram.Node {
-	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/openstack/workloadprovisioning/magnum.png")}, c.opts, opts)
-	return diagram.NewNode(nopts...)
-}
-
 func (c *workloadprovisioningContainer) Sahara(opts ...diagram.NodeOption) *diagram.Node {
 	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/openstack/workloadprovisioning/sahara.png")}, c.opts, opts)
 	return diagram.NewNode(nopts...)
@@ -24,5 +19,10 @@ func (c *workloadprovisioningContainer) Sahara(opts ...diagram.NodeOption) *diag
 
 func (c *workloadprovisioningContainer) Trove(opts ...diagram.NodeOption) *diagram.Node {
 	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/openstack/workloadprovisioning/trove.png")}, c.opts, opts)
+	return diagram.NewNode(nopts...)
+}
+
+func (c *workloadprovisioningContainer) Magnum(opts ...diagram.NodeOption) *diagram.Node {
+	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/openstack/workloadprovisioning/magnum.png")}, c.opts, opts)
 	return diagram.NewNode(nopts...)
 }

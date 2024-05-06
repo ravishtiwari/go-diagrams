@@ -2,7 +2,6 @@ package diagram
 
 import (
 	"errors"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 
@@ -34,10 +33,10 @@ func New(opts ...Option) (*Diagram, error) {
 		}
 	}
 
-	return new(g, options), nil
+	return newDiagram(g, options), nil
 }
 
-func new(g *graphviz.Escape, options Options) *Diagram {
+func newDiagram(g *graphviz.Escape, options Options) *Diagram {
 	return &Diagram{
 		g:       g,
 		options: options,
@@ -59,11 +58,13 @@ func (d *Diagram) Groups() []*Group {
 
 func (d *Diagram) Add(ns ...*Node) *Diagram {
 	d.root.Add(ns...)
+
 	return d
 }
 
 func (d *Diagram) Connect(start, end *Node, opts ...EdgeOption) *Diagram {
 	d.Add(start, end)
+
 	return d.ConnectByID(start.ID(), end.ID(), opts...)
 }
 
@@ -75,6 +76,7 @@ func (d *Diagram) ConnectByID(start, end string, opts ...EdgeOption) *Diagram {
 
 func (d *Diagram) Group(g *Group) *Diagram {
 	d.root.Group(g)
+
 	return d
 }
 
@@ -87,13 +89,13 @@ func (d *Diagram) Render() error {
 }
 
 func (d *Diagram) render() error {
-	outdir := d.options.Name
-	if err := os.Mkdir(outdir, os.ModePerm); err != nil {
+	outDir := d.options.Name
+	if err := os.MkdirAll(outDir, os.ModePerm); err != nil && !errors.Is(err, os.ErrExist) {
 		return err
 	}
 
 	for _, n := range d.root.nodes {
-		err := n.render("root", outdir, d.g)
+		err := n.render("root", outDir, d.g)
 		if err != nil {
 			return err
 		}
@@ -107,7 +109,7 @@ func (d *Diagram) render() error {
 	}
 
 	for _, g := range d.root.children {
-		if err := g.render(outdir, d.g); err != nil {
+		if err := g.render(outDir, d.g); err != nil {
 			return err
 		}
 	}
@@ -125,7 +127,9 @@ func (d *Diagram) renderOutput() error {
 }
 
 func (d *Diagram) saveDot() error {
-	fname := filepath.Join(d.options.Name, d.options.FileName+".dot")
-
-	return ioutil.WriteFile(fname, []byte(d.g.String()), os.ModePerm)
+	return os.WriteFile(
+		filepath.Join(d.options.Name, d.options.FileName+".dot"),
+		[]byte(d.g.String()),
+		os.ModePerm,
+	)
 }
