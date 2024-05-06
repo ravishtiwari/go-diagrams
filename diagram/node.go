@@ -1,15 +1,14 @@
 package diagram
 
 import (
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
 
 	graphviz "github.com/awalterschulze/gographviz"
-	"github.com/emarais-godaddy/go-diagrams/nodes/assets"
-	"github.com/emarais-godaddy/go-diagrams/pkg/rand"
+	"github.com/emarais-godaddy/go-diagrams/assets"
+	"github.com/emarais-godaddy/go-diagrams/pkg/randstr"
 )
 
 type Node struct {
@@ -23,7 +22,7 @@ func NewNode(opts ...NodeOption) *Node {
 	options := DefaultNodeOptions(opts...)
 
 	return &Node{
-		id:      rand.String(8),
+		id:      randstr.String(8),
 		Options: options,
 	}
 }
@@ -43,7 +42,7 @@ func (n *Node) setConnector(c Connector) {
 
 func (n *Node) render(parent string, path string, graph *graphviz.Escape) error {
 	if n.Options.Image != "" {
-		img, err := assets.ReadFile(n.Options.Image)
+		img, err := assets.Embedded.ReadFile(n.Options.Image)
 		if err != nil {
 			return err
 		}
@@ -54,7 +53,7 @@ func (n *Node) render(parent string, path string, graph *graphviz.Escape) error 
 		}
 
 		outFile := filepath.Join(outDir, filepath.Base(n.Options.Image))
-		if err := ioutil.WriteFile(outFile, img, os.ModePerm); err != nil {
+		if err := os.WriteFile(outFile, img, os.ModePerm); err != nil {
 			return err
 		}
 	}

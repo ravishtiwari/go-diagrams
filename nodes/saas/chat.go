@@ -12,12 +12,12 @@ var Chat = &chatContainer{
 	path: "assets/saas/chat",
 }
 
-func (c *chatContainer) Slack(opts ...diagram.NodeOption) *diagram.Node {
-	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/saas/chat/slack.png")}, c.opts, opts)
+func (c *chatContainer) Telegram(opts ...diagram.NodeOption) *diagram.Node {
+	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/saas/chat/telegram.png")}, c.opts, opts)
 	return diagram.NewNode(nopts...)
 }
 
-func (c *chatContainer) Telegram(opts ...diagram.NodeOption) *diagram.Node {
-	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/saas/chat/telegram.png")}, c.opts, opts)
+func (c *chatContainer) Slack(opts ...diagram.NodeOption) *diagram.Node {
+	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/saas/chat/slack.png")}, c.opts, opts)
 	return diagram.NewNode(nopts...)
 }

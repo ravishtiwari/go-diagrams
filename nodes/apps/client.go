@@ -12,6 +12,11 @@ var Client = &clientContainer{
 	path: "assets/apps/client",
 }
 
+func (c *clientContainer) Users(opts ...diagram.NodeOption) *diagram.Node {
+	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/apps/client/users.png")}, c.opts, opts)
+	return diagram.NewNode(nopts...)
+}
+
 func (c *clientContainer) Client(opts ...diagram.NodeOption) *diagram.Node {
 	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/apps/client/client.png")}, c.opts, opts)
 	return diagram.NewNode(nopts...)
@@ -19,10 +24,5 @@ func (c *clientContainer) Client(opts ...diagram.NodeOption) *diagram.Node {
 
 func (c *clientContainer) User(opts ...diagram.NodeOption) *diagram.Node {
 	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/apps/client/user.png")}, c.opts, opts)
-	return diagram.NewNode(nopts...)
-}
-
-func (c *clientContainer) Users(opts ...diagram.NodeOption) *diagram.Node {
-	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/apps/client/users.png")}, c.opts, opts)
 	return diagram.NewNode(nopts...)
 }

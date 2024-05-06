@@ -12,11 +12,6 @@ var Database = &databaseContainer{
 	path: "assets/gcp/database",
 }
 
-func (c *databaseContainer) Datastore(opts ...diagram.NodeOption) *diagram.Node {
-	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/gcp/database/datastore.png")}, c.opts, opts)
-	return diagram.NewNode(nopts...)
-}
-
 func (c *databaseContainer) Firestore(opts ...diagram.NodeOption) *diagram.Node {
 	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/gcp/database/firestore.png")}, c.opts, opts)
 	return diagram.NewNode(nopts...)
@@ -39,5 +34,10 @@ func (c *databaseContainer) Sql(opts ...diagram.NodeOption) *diagram.Node {
 
 func (c *databaseContainer) Bigtable(opts ...diagram.NodeOption) *diagram.Node {
 	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/gcp/database/bigtable.png")}, c.opts, opts)
+	return diagram.NewNode(nopts...)
+}
+
+func (c *databaseContainer) Datastore(opts ...diagram.NodeOption) *diagram.Node {
+	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/gcp/database/datastore.png")}, c.opts, opts)
 	return diagram.NewNode(nopts...)
 }

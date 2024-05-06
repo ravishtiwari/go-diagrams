@@ -12,21 +12,6 @@ var Integration = &integrationContainer{
 	path: "assets/aws/integration",
 }
 
-func (c *integrationContainer) Appsync(opts ...diagram.NodeOption) *diagram.Node {
-	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/aws/integration/appsync.png")}, c.opts, opts)
-	return diagram.NewNode(nopts...)
-}
-
-func (c *integrationContainer) ConsoleMobileApplication(opts ...diagram.NodeOption) *diagram.Node {
-	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/aws/integration/console-mobile-application.png")}, c.opts, opts)
-	return diagram.NewNode(nopts...)
-}
-
-func (c *integrationContainer) Eventbridge(opts ...diagram.NodeOption) *diagram.Node {
-	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/aws/integration/eventbridge.png")}, c.opts, opts)
-	return diagram.NewNode(nopts...)
-}
-
 func (c *integrationContainer) Mq(opts ...diagram.NodeOption) *diagram.Node {
 	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/aws/integration/mq.png")}, c.opts, opts)
 	return diagram.NewNode(nopts...)
@@ -49,5 +34,20 @@ func (c *integrationContainer) StepFunctions(opts ...diagram.NodeOption) *diagra
 
 func (c *integrationContainer) ApplicationIntegration(opts ...diagram.NodeOption) *diagram.Node {
 	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/aws/integration/application-integration.png")}, c.opts, opts)
+	return diagram.NewNode(nopts...)
+}
+
+func (c *integrationContainer) Appsync(opts ...diagram.NodeOption) *diagram.Node {
+	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/aws/integration/appsync.png")}, c.opts, opts)
+	return diagram.NewNode(nopts...)
+}
+
+func (c *integrationContainer) ConsoleMobileApplication(opts ...diagram.NodeOption) *diagram.Node {
+	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/aws/integration/console-mobile-application.png")}, c.opts, opts)
+	return diagram.NewNode(nopts...)
+}
+
+func (c *integrationContainer) Eventbridge(opts ...diagram.NodeOption) *diagram.Node {
+	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/aws/integration/eventbridge.png")}, c.opts, opts)
 	return diagram.NewNode(nopts...)
 }

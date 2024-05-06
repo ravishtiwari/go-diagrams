@@ -12,11 +12,6 @@ var Security = &securityContainer{
 	path: "assets/elastic/security",
 }
 
-func (c *securityContainer) Endpoint(opts ...diagram.NodeOption) *diagram.Node {
-	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/elastic/security/endpoint.png")}, c.opts, opts)
-	return diagram.NewNode(nopts...)
-}
-
 func (c *securityContainer) Security(opts ...diagram.NodeOption) *diagram.Node {
 	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/elastic/security/security.png")}, c.opts, opts)
 	return diagram.NewNode(nopts...)
@@ -24,5 +19,10 @@ func (c *securityContainer) Security(opts ...diagram.NodeOption) *diagram.Node {
 
 func (c *securityContainer) Siem(opts ...diagram.NodeOption) *diagram.Node {
 	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/elastic/security/siem.png")}, c.opts, opts)
+	return diagram.NewNode(nopts...)
+}
+
+func (c *securityContainer) Endpoint(opts ...diagram.NodeOption) *diagram.Node {
+	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/elastic/security/endpoint.png")}, c.opts, opts)
 	return diagram.NewNode(nopts...)
 }

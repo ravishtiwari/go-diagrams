@@ -12,8 +12,18 @@ var Migration = &migrationContainer{
 	path: "assets/aws/migration",
 }
 
-func (c *migrationContainer) TransferForSftp(opts ...diagram.NodeOption) *diagram.Node {
-	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/aws/migration/transfer-for-sftp.png")}, c.opts, opts)
+func (c *migrationContainer) Snowmobile(opts ...diagram.NodeOption) *diagram.Node {
+	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/aws/migration/snowmobile.png")}, c.opts, opts)
+	return diagram.NewNode(nopts...)
+}
+
+func (c *migrationContainer) ApplicationDiscoveryService(opts ...diagram.NodeOption) *diagram.Node {
+	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/aws/migration/application-discovery-service.png")}, c.opts, opts)
+	return diagram.NewNode(nopts...)
+}
+
+func (c *migrationContainer) DatabaseMigrationService(opts ...diagram.NodeOption) *diagram.Node {
+	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/aws/migration/database-migration-service.png")}, c.opts, opts)
 	return diagram.NewNode(nopts...)
 }
 
@@ -27,13 +37,18 @@ func (c *migrationContainer) MigrationAndTransfer(opts ...diagram.NodeOption) *d
 	return diagram.NewNode(nopts...)
 }
 
+func (c *migrationContainer) MigrationHub(opts ...diagram.NodeOption) *diagram.Node {
+	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/aws/migration/migration-hub.png")}, c.opts, opts)
+	return diagram.NewNode(nopts...)
+}
+
 func (c *migrationContainer) Snowball(opts ...diagram.NodeOption) *diagram.Node {
 	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/aws/migration/snowball.png")}, c.opts, opts)
 	return diagram.NewNode(nopts...)
 }
 
-func (c *migrationContainer) MigrationHub(opts ...diagram.NodeOption) *diagram.Node {
-	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/aws/migration/migration-hub.png")}, c.opts, opts)
+func (c *migrationContainer) CloudendureMigration(opts ...diagram.NodeOption) *diagram.Node {
+	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/aws/migration/cloudendure-migration.png")}, c.opts, opts)
 	return diagram.NewNode(nopts...)
 }
 
@@ -47,22 +62,7 @@ func (c *migrationContainer) SnowballEdge(opts ...diagram.NodeOption) *diagram.N
 	return diagram.NewNode(nopts...)
 }
 
-func (c *migrationContainer) Snowmobile(opts ...diagram.NodeOption) *diagram.Node {
-	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/aws/migration/snowmobile.png")}, c.opts, opts)
-	return diagram.NewNode(nopts...)
-}
-
-func (c *migrationContainer) ApplicationDiscoveryService(opts ...diagram.NodeOption) *diagram.Node {
-	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/aws/migration/application-discovery-service.png")}, c.opts, opts)
-	return diagram.NewNode(nopts...)
-}
-
-func (c *migrationContainer) CloudendureMigration(opts ...diagram.NodeOption) *diagram.Node {
-	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/aws/migration/cloudendure-migration.png")}, c.opts, opts)
-	return diagram.NewNode(nopts...)
-}
-
-func (c *migrationContainer) DatabaseMigrationService(opts ...diagram.NodeOption) *diagram.Node {
-	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/aws/migration/database-migration-service.png")}, c.opts, opts)
+func (c *migrationContainer) TransferForSftp(opts ...diagram.NodeOption) *diagram.Node {
+	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/aws/migration/transfer-for-sftp.png")}, c.opts, opts)
 	return diagram.NewNode(nopts...)
 }

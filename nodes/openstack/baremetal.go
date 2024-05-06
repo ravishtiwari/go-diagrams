@@ -12,12 +12,12 @@ var Baremetal = &baremetalContainer{
 	path: "assets/openstack/baremetal",
 }
 
-func (c *baremetalContainer) Cyborg(opts ...diagram.NodeOption) *diagram.Node {
-	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/openstack/baremetal/cyborg.png")}, c.opts, opts)
+func (c *baremetalContainer) Ironic(opts ...diagram.NodeOption) *diagram.Node {
+	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/openstack/baremetal/ironic.png")}, c.opts, opts)
 	return diagram.NewNode(nopts...)
 }
 
-func (c *baremetalContainer) Ironic(opts ...diagram.NodeOption) *diagram.Node {
-	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/openstack/baremetal/ironic.png")}, c.opts, opts)
+func (c *baremetalContainer) Cyborg(opts ...diagram.NodeOption) *diagram.Node {
+	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/openstack/baremetal/cyborg.png")}, c.opts, opts)
 	return diagram.NewNode(nopts...)
 }

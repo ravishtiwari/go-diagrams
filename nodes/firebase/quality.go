@@ -12,6 +12,11 @@ var Quality = &qualityContainer{
 	path: "assets/firebase/quality",
 }
 
+func (c *qualityContainer) PerformanceMonitoring(opts ...diagram.NodeOption) *diagram.Node {
+	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/firebase/quality/performance-monitoring.png")}, c.opts, opts)
+	return diagram.NewNode(nopts...)
+}
+
 func (c *qualityContainer) TestLab(opts ...diagram.NodeOption) *diagram.Node {
 	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/firebase/quality/test-lab.png")}, c.opts, opts)
 	return diagram.NewNode(nopts...)
@@ -29,10 +34,5 @@ func (c *qualityContainer) CrashReporting(opts ...diagram.NodeOption) *diagram.N
 
 func (c *qualityContainer) Crashlytics(opts ...diagram.NodeOption) *diagram.Node {
 	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/firebase/quality/crashlytics.png")}, c.opts, opts)
-	return diagram.NewNode(nopts...)
-}
-
-func (c *qualityContainer) PerformanceMonitoring(opts ...diagram.NodeOption) *diagram.Node {
-	nopts := diagram.MergeOptionSets(diagram.OptionSet{diagram.Icon("assets/firebase/quality/performance-monitoring.png")}, c.opts, opts)
 	return diagram.NewNode(nopts...)
 }
