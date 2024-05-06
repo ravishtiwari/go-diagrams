@@ -1,6 +1,6 @@
 package gcp
 
-import "github.com/blushft/go-diagrams/diagram"
+import "github.com/emarais-godaddy/go-diagrams/diagram"
 
 type networkContainer struct {
 	path string

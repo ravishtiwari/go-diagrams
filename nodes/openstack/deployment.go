@@ -1,6 +1,6 @@
 package openstack
 
-import "github.com/blushft/go-diagrams/diagram"
+import "github.com/emarais-godaddy/go-diagrams/diagram"
 
 type deploymentContainer struct {
 	path string

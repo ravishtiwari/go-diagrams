@@ -1,6 +1,6 @@
 package k8s
 
-import "github.com/blushft/go-diagrams/diagram"
+import "github.com/emarais-godaddy/go-diagrams/diagram"
 
 type infraContainer struct {
 	path string
