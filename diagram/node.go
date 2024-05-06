@@ -7,8 +7,8 @@ import (
 	"strings"
 
 	graphviz "github.com/awalterschulze/gographviz"
-	"github.com/emarais-godaddy/go-diagrams/assets"
 	"github.com/emarais-godaddy/go-diagrams/pkg/randstr"
+	"github.com/emarais-godaddy/go-diagrams/resources"
 )
 
 type Node struct {
@@ -42,7 +42,7 @@ func (n *Node) setConnector(c Connector) {
 
 func (n *Node) render(parent string, path string, graph *graphviz.Escape) error {
 	if n.Options.Image != "" {
-		img, err := assets.Embedded.ReadFile(n.Options.Image)
+		img, err := resources.Embedded.ReadFile(n.Options.Image)
 		if err != nil {
 			return err
 		}
@@ -62,7 +62,6 @@ func (n *Node) render(parent string, path string, graph *graphviz.Escape) error 
 }
 
 func (n *Node) attrs() map[string]string {
-
 	if n.Options.Image != "" {
 		labelH := float64(len(strings.Split(n.Options.Label, "/n")))
 		n.Options.Height = n.Options.Height + (0.4 * labelH)
