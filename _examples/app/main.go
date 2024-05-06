@@ -33,7 +33,7 @@ func main() {
 		ConnectAllFrom(lb.ID(), diagram.Forward()).
 		ConnectAllTo(cache.ID(), diagram.Forward())
 
-	dc.NewGroup("data").Label("Data Layer").Add(cache, db).Connect(cache, db, diagram.Reverse(), diagram.EdgeLabel("warms"))
+	dc.NewGroup("data").Label("Data Layer").Add(cache, db).Connect(cache, db, diagram.EdgeLabel("warms"))
 
 	d.Connect(dns, lb, diagram.Forward()).Group(dc)
 

@@ -1,0 +1,17 @@
+# https://taskfile.dev
+
+version: "3"
+
+tasks:
+  render:
+    desc: Render the diagram
+    cmds:
+      - rm -rf go-diagrams
+      - go run main.go
+      - task: diagram
+
+  diagram:
+    desc: Render the diagram png
+    dir: ./go-diagrams
+    cmds:
+      - dot -Tpng diagram.dot > diagram.png
