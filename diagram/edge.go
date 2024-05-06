@@ -125,6 +125,12 @@ func Bidirectional() EdgeOption {
 
 func EdgeLabel(s string) EdgeOption {
 	return func(o *EdgeOptions) {
+		o.Label = s
+	}
+}
+
+func EdgeXLabel(s string) EdgeOption {
+	return func(o *EdgeOptions) {
 		o.Attributes["xlabel"] = s
 	}
 }
@@ -132,5 +138,17 @@ func EdgeLabel(s string) EdgeOption {
 func EdgeFontOptions(f Font) EdgeOption {
 	return func(o *EdgeOptions) {
 		o.Font = f
+	}
+}
+
+func SnapToGroup(g *Group) EdgeOption {
+	return func(o *EdgeOptions) {
+		o.Attributes["lhead"] = g.ID()
+	}
+}
+
+func SnapFromGroup(g *Group) EdgeOption {
+	return func(o *EdgeOptions) {
+		o.Attributes["ltail"] = g.ID()
 	}
 }

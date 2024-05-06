@@ -1,2 +1,3 @@
 *.dot
 _examples/*/go-diagrams
+.DS_Store
