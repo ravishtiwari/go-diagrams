@@ -199,12 +199,8 @@ func defaultGroupOptions(idx int, opts ...GroupOption) GroupOptions {
 		PenColor:     "#AEB6BE",
 		Shape:        "box",
 		Style:        "rounded",
-		Font: Font{
-			Name:  "Sans-Serif",
-			Size:  12,
-			Color: "#2D3436",
-		},
-		Attributes: make(map[string]string),
+		Font:         defaultFont(),
+		Attributes:   make(map[string]string),
 	}
 
 	IndexedBackground(idx)(&options)
@@ -236,5 +232,25 @@ func IndexedBackground(idx int) GroupOption {
 func GroupLabel(l string) GroupOption {
 	return func(o *GroupOptions) {
 		o.Label = l
+	}
+}
+
+func GroupAttribute(name, value string) GroupOption {
+	return func(o *GroupOptions) {
+		o.Attributes[name] = value
+	}
+}
+
+func GroupAttributes(attrs map[string]string) GroupOption {
+	return func(o *GroupOptions) {
+		for k, v := range attrs {
+			o.Attributes[k] = v
+		}
+	}
+}
+
+func GroupFontOptions(f Font) GroupOption {
+	return func(o *GroupOptions) {
+		o.Font = f
 	}
 }

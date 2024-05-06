@@ -73,12 +73,8 @@ type EdgeOption func(*EdgeOptions)
 
 func DefaultEdgeOptions(opts ...EdgeOption) EdgeOptions {
 	eopts := EdgeOptions{
-		Color: "#7B8894",
-		Font: Font{
-			Name:  "Sans-Serif",
-			Size:  13,
-			Color: "#2D3436",
-		},
+		Color:      "#7B8894",
+		Font:       defaultFont(),
 		Forward:    true,
 		Attributes: make(map[string]string),
 	}
@@ -124,5 +120,17 @@ func Bidirectional() EdgeOption {
 	return func(o *EdgeOptions) {
 		o.Forward = true
 		o.Reverse = true
+	}
+}
+
+func EdgeLabel(s string) EdgeOption {
+	return func(o *EdgeOptions) {
+		o.Attributes["xlabel"] = s
+	}
+}
+
+func EdgeFontOptions(f Font) EdgeOption {
+	return func(o *EdgeOptions) {
+		o.Font = f
 	}
 }

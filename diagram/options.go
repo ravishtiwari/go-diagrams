@@ -54,7 +54,7 @@ func DefaultOptions(opts ...Option) Options {
 		Pad:        2.0,
 		Splines:    "ortho",
 		NodeSep:    0.60,
-		RankSep:    0.75,
+		RankSep:    1.0,
 		Font:       defaultFont(),
 		Attributes: make(map[string]string),
 	}
@@ -125,5 +125,11 @@ func Style(s string) Option {
 func LabelJustify(j string) Option {
 	return func(o *Options) {
 		o.Attributes["labeljust"] = j
+	}
+}
+
+func FontOptions(f Font) Option {
+	return func(o *Options) {
+		o.Font = f
 	}
 }

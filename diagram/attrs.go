@@ -9,7 +9,7 @@ type Font struct {
 func defaultFont() Font {
 	return Font{
 		Name:  "Sans-Serif",
-		Size:  13,
+		Size:  11,
 		Color: "#2D3436",
 	}
 }

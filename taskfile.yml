@@ -1,0 +1,43 @@
+# https://taskfile.dev
+
+version: "3"
+
+# Here we can include subdirectories of taskfiles that can run in isolation. Typically used for lambdas
+includes:
+  app:
+    taskfile: ./_examples/app
+    dir: ./_examples/app
+    aliases: [app]
+
+env:
+  GOPROXY: https://proxy.golang.org,direct
+
+tasks:
+  check:
+    desc: Runs all code checks on available lambdas
+    cmds:
+      - task: app:check
+
+  all:
+    desc: Runs the code checks against the whole project
+    cmds:
+      - task: tidy
+      - task: fmt
+      - task: lint
+      - task: check
+
+  tidy:
+    desc: Download dependencies and tidy the mod file
+    cmds:
+      - go mod download
+      - go mod tidy
+
+  fmt:
+    desc: Gofumpt all code
+    cmds:
+      - gofmt -w -l .
+
+  lint:
+    desc: Lint the code with golangci-lint
+    cmds:
+      - golangci-lint run ./...

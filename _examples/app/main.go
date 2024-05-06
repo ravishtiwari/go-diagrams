@@ -8,7 +8,11 @@ import (
 )
 
 func main() {
-	d, err := diagram.New(diagram.Filename("app"), diagram.Label("App"), diagram.Direction("LR"))
+	attrs := map[string]string{
+		"ranksep": "1.5",
+	}
+
+	d, err := diagram.New(diagram.Filename("diagram"), diagram.WithAttributes(attrs), diagram.Label("App"), diagram.Direction("LR"))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -29,7 +33,7 @@ func main() {
 		ConnectAllFrom(lb.ID(), diagram.Forward()).
 		ConnectAllTo(cache.ID(), diagram.Forward())
 
-	dc.NewGroup("data").Label("Data Layer").Add(cache, db).Connect(cache, db)
+	dc.NewGroup("data").Label("Data Layer").Add(cache, db).Connect(cache, db, diagram.Reverse(), diagram.EdgeLabel("warms"))
 
 	d.Connect(dns, lb, diagram.Forward()).Group(dc)
 
